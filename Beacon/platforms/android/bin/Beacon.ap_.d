@@ -24,7 +24,9 @@
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/spec.html \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/css/index.css \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/img/logo.png \
+/Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/js/angular.min.js \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/js/index.js \
+/Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/js/jquery-2.0.3.min.js \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/res/icon \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/res/screen \
 /Users/Station22/Desktop/workspace/beacon/Beacon/platforms/android/assets/www/res/icon/android \
