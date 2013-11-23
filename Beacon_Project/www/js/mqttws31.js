@@ -776,17 +776,19 @@ Messaging = (function (global) {
     ClientImpl.prototype._MAX_TRACE_ENTRIES = 100;
 
     ClientImpl.prototype.connect = function (connectOptions) {
+
     	var connectOptionsMasked = this._traceMask(connectOptions, "password"); 
     	this._trace("Client.connect", connectOptionsMasked, this.socket, this.connected);
-        
+      console.log("MQTT connecting:", this.connected, " socket:",this.socket);
     	if (this.connected) 
         	throw new Error(format(ERROR.INVALID_STATE, ["already connected"]));
     	if (this.socket)
     		throw new Error(format(ERROR.INVALID_STATE, ["already connected"]));
         
     	this.connectOptions = connectOptions;
-    	
+    	console.log("HOSTs:",connectOptions.hosts);
     	if (connectOptions.hosts) {
+
     	    this.hostIndex = 0;
     	    this._doConnect(connectOptions.hosts[0], connectOptions.ports[0]);  
     	} else {
@@ -909,9 +911,11 @@ Messaging = (function (global) {
         if (this.connectOptions.useSSL)
           wsurl = ["wss://", host, ":", port, "/mqtt"].join("");
         else
-          wsurl = ["ws://", host, ":", port, "/mqtt"].join("");
+          wsurl = ["ws://", host, ":", port].join("");
         this.connected = false;
+        console.log("_doConnect", wsurl);
         this.socket = new WebSocket(wsurl, 'mqttv3.1');
+        // this.socket = new WebSocket("ws://localhost:1883/");
         this.socket.binaryType = 'arraybuffer';
         this.socket.onopen = scope(this._on_socket_open, this);
         this.socket.onmessage = scope(this._on_socket_message, this);
@@ -1065,9 +1069,11 @@ Messaging = (function (global) {
      */
     ClientImpl.prototype._on_socket_open = function () {        
         // Create the CONNECT message object.
+        console.log("_on_socket_open");
         var wireMessage = new WireMessage(MESSAGE_TYPE.CONNECT, this.connectOptions); 
         wireMessage.clientId = this.clientId;
         this._socket_send(wireMessage);
+
     };
 
     /** 
@@ -1076,7 +1082,7 @@ Messaging = (function (global) {
      */
     ClientImpl.prototype._on_socket_message = function (event) {
         this._trace("Client._on_socket_message", event.data);
-        
+        console.log("_on_socket_message",event.data);
         // Reset the receive ping timer, we now have evidence the server is alive.
         this.receivePinger.reset();
         var byteArray = new Uint8Array(event.data);
@@ -1241,6 +1247,7 @@ Messaging = (function (global) {
     
     /** @ignore */
     ClientImpl.prototype._on_socket_error = function (error) {
+    	console.log("_on_socket_error:",error);
     	this._disconnected(ERROR.SOCKET_ERROR.code , format(ERROR.SOCKET_ERROR, [error.data]));
     };
 
@@ -1305,7 +1312,7 @@ Messaging = (function (global) {
      */
     ClientImpl.prototype._disconnected = function (errorCode, errorText) {
     	this._trace("Client._disconnected", errorCode, errorText);
-    	
+    	console.log("_disconnected:", errorCode, errorText);
     	this.sendPinger.cancel();
     	this.receivePinger.cancel();
     	if (this._connectTimeout)

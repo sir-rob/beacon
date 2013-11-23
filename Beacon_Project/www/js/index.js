@@ -117,7 +117,7 @@ function searchName(name_str){
 }
 
 // MQTT MESSENGER /////////////////////////////////////////////////////
-// client = new Messaging.Client(location.hostname, Number(location.port), "Alan");
+client = new Messaging.Client(location.hostname, Number(location.port), "Alan");
 // client = new Messaging.Client("localhost", 1883, "Alan");
 // client.onConnectionLost = onConnectionLost;
 // client.onMessageArrived = onMessageArrived;
@@ -146,7 +146,7 @@ function WebSocketTest()
   {
      console.log("WebSocket is supported by your Browser!");
      // Let us open a web socket
-     var ws = new WebSocket("ws://localhost:9998/echo");
+     var ws = new WebSocket("ws://localhost:1883/echo");
      ws.onopen = function()
      {
         // Web Socket is connected, send data using send()
@@ -174,8 +174,8 @@ function WebSocketTest()
 // ON READY ////////////////////////////////
 $(document).ready(function(){
     console.log("jQuery");
-    WebSocketTest();
-    client = new Messaging.Client("localhost", 1883, "Alan");
+    // WebSocketTest();
+    client = new Messaging.Client("localhost", 1883, "AlanChat");
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     client.connect({onSuccess:onConnect});
