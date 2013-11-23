@@ -116,9 +116,68 @@ function searchName(name_str){
     navigator.contacts.find(fields, onSuccess, onError, options);
 }
 
+// MQTT MESSENGER /////////////////////////////////////////////////////
+// client = new Messaging.Client(location.hostname, Number(location.port), "Alan");
+// client = new Messaging.Client("localhost", 1883, "Alan");
+// client.onConnectionLost = onConnectionLost;
+// client.onMessageArrived = onMessageArrived;
+// client.connect({onSuccess:onConnect});
+
+function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+    console.log("onConnect");
+    client.subscribe("/World");
+    message = new Messaging.Message("Hello");
+    message.destinationName = "/World";
+    client.send(message); 
+};
+function onConnectionLost(responseObject) {
+if (responseObject.errorMessage)
+  console.log("onConnectionLost:"+responseObject.errorMessage);
+};
+function onMessageArrived(message) {
+    console.log("onMessageArrived:"+message.payloadString);
+    client.disconnect(); 
+};  
+
+function WebSocketTest()
+{
+  if ("WebSocket" in window)
+  {
+     console.log("WebSocket is supported by your Browser!");
+     // Let us open a web socket
+     var ws = new WebSocket("ws://localhost:9998/echo");
+     ws.onopen = function()
+     {
+        // Web Socket is connected, send data using send()
+        ws.send("Message to send");
+        console.log("Message is sent...");
+     };
+     ws.onmessage = function (evt) 
+     { 
+        var received_msg = evt.data;
+        console.log("Message is received...");
+     };
+     ws.onclose = function()
+     { 
+        // websocket is closed.
+        console.log("Connection is closed..."); 
+     };
+  }
+  else
+  {
+     // The browser doesn't support WebSocket
+     console.log("WebSocket NOT supported by your Browser!");
+  }
+}
+
+// ON READY ////////////////////////////////
 $(document).ready(function(){
     console.log("jQuery");
-
-
+    WebSocketTest();
+    client = new Messaging.Client("localhost", 1883, "Alan");
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+    client.connect({onSuccess:onConnect});
 
 });
