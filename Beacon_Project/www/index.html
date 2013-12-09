@@ -17,55 +17,100 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html ng-app>
+<html ng-app="beaconApp">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/foundation.css" />
-        
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        .inner-wrap,
+        .left-off-canvas-menu,
+        .off-canvas-wrap,
+        .main-section{
+            height: 100%;
+        }
+        </style>
         <title>Hello World</title>
     </head>
     <body>
-        <div class="row">
-            <div class="small-12 small-centered columns">
-            <h1>Welcome to Foundation</h1>
+        <div class="off-canvas-wrap">
+          <div class="inner-wrap">
+            <nav class="tab-bar" data-magellan-expedition="fixed">
+              <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+              </section>
 
-            <div class="small-8 small-centered columns">
-            <div class="app">
-                <form name="myForm" ng-controller="Ctrl">
-                    <div>
-                      <label>Name:</label>
-                      <input type="text" ng-model="yourName" ng-change="change()" placeholder="Enter a name here">
-                      <hr>
-                      <h1>Hello {{yourName}}!</h1>
-                    </div>
+              <section class="middle tab-bar-section">
+                <h1 class="title">Registration</h1>
+              </section>
+
+              <section class="right-small">
+                <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+              </section>
+            </nav>
+
+            <aside class="left-off-canvas-menu">
+              <ul class="off-canvas-list">
+                <li><label>Foundation</label></li>
+                <li><a href="#">The Psychohistorians</a></li>
+              </ul>
+            </aside>
+
+            <aside class="right-off-canvas-menu">
+                <div id="map" style="width: 100%; height: 100%;"></div>
+              <!-- <ul class="off-canvas-list">
+                <li><label>Users</label></li>
+                <li><a href="#">Hari Seldon</a></li>
+                ...
+              </ul> -->
+              
+            </aside>
+
+            <section class="main-section">
+                <!-- <dl class="sub-nav">
+                  <dt>Filter:</dt>
+                  <dd class="active"><a href="#">All</a></dd>
+                  <dd><a href="#">Active</a></dd>
+                  <dd><a href="#">Pending</a></dd>
+                  <dd><a href="#">Suspended</a></dd>
+                </dl> -->
+                <div ng-view>
                     
-                      
-                    <h1>Apache Cordova</h1>
-                    <div id="deviceready" class="blink">
-                        <p class="event listening">Connecting to Device</p>
-                        <p class="event received">Device is Ready</p>
-                        <p id="deviceProperties">Loading device properties...</p>
-                    </div>
-                </form>
-                <div id="timer"></div>
-            </div>
-            </div>
+                </div>
+                Nothing here {{'yet' + '!'}}
+                     <p>1 + 2 = {{ 1 + 2 }}</p>
 
-            </div>
+            </section>
+
+            <a class="exit-off-canvas"></a>
+
+          </div>
         </div>
-
-
-        <script type="text/javascript" src="cordova.js"></script>
+        <!-- // <script type="text/javascript" src="cordova.js"></script> -->
         <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/foundation.min.js"></script>
+        <!-- // <script type="text/javascript" src="js/foundation/foundation.abide.js"></script> -->
+
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/angular/angular-route.min.js"></script>
+        <script src="js/angular/app.js"></script>
+        <script src="js/angular/controllers.js"></script>
+
         <script type="text/javascript" src="js/modernizr.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript">
-            app.initialize();
+            $(document).foundation();
         </script>
+
     </body>
 </html>

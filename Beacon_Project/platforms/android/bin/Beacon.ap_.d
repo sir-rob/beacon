@@ -23,6 +23,7 @@
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/spec \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/spec.html \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/css/foundation.css \
+/Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/css/foundation.min.css \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/css/index.css \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/css/normalize.css \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/img/logo.png \
@@ -31,6 +32,7 @@
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation.min.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/index.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/jquery-2.0.3.min.js \
+/Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/map.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/modernizr.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.abide.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.accordion.js \
@@ -41,6 +43,7 @@
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.joyride.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.magellan.js \
+/Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.offcanvas.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.orbit.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.reveal.js \
 /Users/Station22/Desktop/workspace/Beacon/Beacon_Project/platforms/android/assets/www/js/foundation/foundation.tab.js \
