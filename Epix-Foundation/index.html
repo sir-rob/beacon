@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" ng-app="epixHD">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EpixHD</title>
+
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+<body>
+
+  <!-- body content here -->
+  <div class="row">
+    <div class="show-for-small columns">
+      <!-- HEADER FOR MOBILE START -->
+      <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+          <nav class="tab-bar">
+            <section class="left-small">
+              <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+            </section>
+
+            <section class="middle tab-bar-section">
+              <img src="http://content.epixhd.com/styleassets/movie-pages/logo.png">
+            </section>
+
+            <section class="right-small">
+              <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+            </section>
+          </nav>
+
+          <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+              <li><label>Foundation</label></li>
+              <li><a href="">Log In</a></li>
+              <li><a href="">Sign Up</a></li>
+              <li><a href="">Get a Free Trial</a></li>
+            </ul>
+          </aside>
+          
+          <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list">
+              <li><label>Users</label></li>
+              <li><a href="#">Hari Seldon</a></li>
+            </ul>
+          </aside>
+
+          <section class="main-section" style="height: 500px">
+            MOBILE CONTENT
+            <!-- content goes here -->
+          </section>
+
+        <a class="exit-off-canvas"></a>
+
+        </div>
+      </div>
+      <!-- HEADER FOR MOBILE END -->
+
+    </div>
+
+<style>
+
+
+.drop-menu-motion {
+  line-height:40px;
+  list-style:none;
+  box-sizing:border-box;
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+/*.drop-menu-motion.ng-leave {
+  -webkit-transition:all linear 0s;
+  transition:all linear 0s;
+  display: none;
+}
+.drop-menu-motion.ng-enter {
+  opacity: 0;
+}*/
+ul > .drop-menu-motion.ng-animate.ng-enter {
+  opacity:0;
+  /*display: block;*/
+}
+ul > .drop-menu-motion.ng-animate.ng-animate-active.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+ul > .drop-menu-motion.ng-animate.ng-leave,
+.drop-menu-motion.ng-animate.ng-leave {
+  opacity:0;
+  height: 0;
+  /*display: none;*/
+}
+.drop-menu-motion.ng-animate.ng-animate-active.ng-leave.ng-leave-active {
+  /*opacity: 1;*/
+}
+
+</style>
+
+
+    <div class="hide-for-small columns">
+      <div class="row">
+
+        <div class="medium-8 large-9 columns header" ng-init="checked2=true">
+          <!-- LOGO -->
+          <img src="http://content.epixhd.com/styleassets/movie-pages/logo-white.png" class="header-logo">
+          <!-- HEADER MENU -->
+          <div ng-controller="HeaderCtrl">
+            <ul id="header-menu">
+              <li class="drop-menu-motion" ng-repeat="nav in headerNav">
+                <a href="{{nav.url}}" ng-click="headerMenu(nav.ref)">{{nav.link}}</a>
+              </li>
+            </ul>
+            <ul id="drop-menu">
+              <li class="drop-menu-motion" ng-repeat="drop in dropList | filter:{menu:ref}">
+                <a href="{{drop.url}}">{{drop.link}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- LOGIN / SEARCH -->
+        <div class="medium-4 large-3 right columns" >
+          <div id="header-search" ng-controller="UserCtrl">
+            <div user-state></div>
+            <label for="right-label"><img src="images/search-glass.png"></label>
+            <input type="text" placeholder="search" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+</div>
+
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/foundation/js/foundation.min.js"></script>
+  <!-- AngularJS 1.2.4 -->
+  <script src="js/angular/angular.js"></script>
+  <script src="js/angular/angular-animate.js"></script>
+  <script src="js/angular/angular-route.js"></script>
+
+  <script src="js/status.js"></script>
+  <script src="js/app.js"></script>
+  
+</body>
+</html>
