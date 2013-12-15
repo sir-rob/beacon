@@ -1,0 +1,67 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#FFFFFF;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    margin:0px;
+    padding:0px;
+    height:100%;
+    width:100%;
+}
+
+/* ios7 status bar fix */
+#ios7statusbar { width:100%; height:20px; background-color:white; position:fixed; z-index:100;}
+.ios7 .ui-page { margin-top: 20px; }
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+/* BEGIN CHAT STYLES */
+.bubble-left, .bubble-right {
+	margin-top: 5px;
+	padding: 5px;
+	max-width: 80%;
+	clear: both;
+}
+
+.bubble-left {
+	position: relative;
+	float: left;
+	margin-right: auto;
+	border: 1px solid blue;
+}
+
+.bubble-right {
+	position: relative;
+	float: right;
+	margin-left: auto;
+	border: 1px solid red;
+}
+
+.ui-block-a.chat-message { width: 80%; }
+.ui-block-b.chat-send { width: 20%; }
