@@ -58,6 +58,8 @@ $(document).on("pageinit", "#ChatPage", function() {
 			
 			$("#chat-messages").append($chatMessage);
 			$(".message").val("");
+			
+			MqttCordovaClient.sendHardCoded(null, null);
 		}
 	});
 });

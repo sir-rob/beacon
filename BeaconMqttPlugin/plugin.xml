@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.beacon.mqtt" version="0.1.0">
+    
+	<name>MqttCordovaClient</name>
+    <description>Mqtt Cordova Client Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,mqtt</keywords>
+    <repo>https://github.com/sir-rob/beacon.git</repo>
+    <issue>https://rally1.rallydev.com/#/15832106864d</issue>
+ 
+    <js-module src="www/MqttCordovaClient.js" name="MqttCordovaClient">
+        <clobbers target="MqttCordovaClient" />
+    </js-module>
+ 
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MqttCordovaClient">
+                <param name="android-package" value="org.beacon.cordova.mqtt.MqttCordovaClient"/>
+            </feature>
+        </config-file>
+ 
+        <source-file src="src/android/MqttCordovaClient.java" target-dir="src/org/beacon/cordova/mqtt" />
+        <source-file src="lib/mqtt-client-0.4.0.jar" target-dir="libs" />
+	</platform>
+	
+	<!-- ios -->
+    <!-- <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Contacts">
+                <param name="ios-package" value="CDVMqttCordovaClient"/>
+            </feature>
+        </config-file>
+
+        <js-module src="www/ios/contacts.js" name="contacts-ios">
+            <merges target="navigator.contacts" />
+        </js-module>
+
+        <js-module src="www/ios/Contact.js" name="Contact-iOS">
+            <merges target="Contact" />
+        </js-module>
+
+        <header-file src="src/ios/CDVMqttCordovaClient.h" />
+        <source-file src="src/ios/CDVMqttCordovaClient.m" />
+
+        <framework src="AddressBook.framework" weak="true" />
+        <framework src="AddressBookUI.framework" weak="true" />
+        <framework src="CoreGraphics.framework" />
+    </platform> -->
+    
+</plugin>
