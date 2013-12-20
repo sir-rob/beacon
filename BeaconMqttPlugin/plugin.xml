@@ -9,7 +9,7 @@
     <issue>https://rally1.rallydev.com/#/15832106864d</issue>
  
     <js-module src="www/MqttCordovaClient.js" name="MqttCordovaClient">
-        <clobbers target="MqttCordovaClient" />
+        <clobbers target="window.MqttCordovaClient" />
     </js-module>
  
     <!-- android -->
