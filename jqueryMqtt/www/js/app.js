@@ -1,4 +1,3 @@
-
 $(document).bind("mobileinit", function(){
 	console.log(">>>mobileinit event");
 	$.mobile.defaultPageTransition = "slide";
@@ -7,6 +6,8 @@ $(document).bind("mobileinit", function(){
 	//$.mobile.touchOverflowEnabled = true;
 	//$.mobile.page.prototype.options.addBackBtn = true;
 	//$.support.touchOverflow = true;
+    
+	console.log("<<<mobileinit event");
 });
 
 // Contacts Page functions
@@ -30,7 +31,7 @@ $(document).on("pageinit", "#ContactsPage", function() {
 });
 
 function onContactsSuccess(contacts) {
-	
+
 	for (var i=0; i<contacts.length; i++) {
 		if (contacts[i].phoneNumbers) {
 			for(var j=0; j<contacts[i].phoneNumbers.length; j++) {
@@ -49,24 +50,35 @@ function onContactsFail(error) {
 $(document).on("pageinit", "#ChatPage", function() {
 	console.log(">>>ChatPage pageinit event");
 	
+	
 	$(".send").unbind().on("tap", function(event) {
-		var message = $(".message").val();
 		
-		if (message != "") {
+		var messageInput = $(".message");
+		
+		if (messageInput.val() != "") {
 			var chatMessage = document.createElement("div");
-			var $chatMessage = $(chatMessage).addClass("bubble-right").html(message);
+			var $chatMessage = $(chatMessage).addClass("bubble-right").html(messageInput.val());
 			
 			$("#chat-messages").append($chatMessage);
-			$(".message").val("");
+			messageInput.val("");
+			messageInput.focus();
 			
-			MqttCordovaClient.sendHardCoded(null, null);
+			//client.send(message);
+			return false;
 		}
 	});
+	$(".message").keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $(".send").tap();
+        }
+    });
+	
+	console.log("<<<ChatPage pageinit event");
 });
 
 // jQuery Mobile IOS header fix...
-$(document).on('blur', 'input, textarea', function() {
-	console.log(document.body.scrollTop + 20);
+$(document).on("blur", "input, textarea", function() {
+	
     setTimeout(function() {
     	if (navigator.userAgent.match(/(iPad|iPhone);.*CPU.*OS 7_\d/i)) {
     		window.scrollTo(document.body.scrollLeft, document.body.scrollTop + 20 + "px");
