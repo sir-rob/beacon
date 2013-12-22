@@ -30,6 +30,7 @@ $(document).on("pageinit", "#ContactsPage", function() {
 	console.log("<<<ContactsPage pageinit event");
 });
 
+//Contact Callbacks
 function onContactsSuccess(contacts) {
 
 	for (var i=0; i<contacts.length; i++) {
@@ -50,11 +51,9 @@ function onContactsFail(error) {
 $(document).on("pageinit", "#ChatPage", function() {
 	console.log(">>>ChatPage pageinit event");
 	
-	
 	$(".send").unbind().on("tap", function(event) {
 		
 		var messageInput = $(".message");
-		
 		if (messageInput.val() != "") {
 			var chatMessage = document.createElement("div");
 			var $chatMessage = $(chatMessage).addClass("bubble-right").html(messageInput.val());
@@ -62,11 +61,9 @@ $(document).on("pageinit", "#ChatPage", function() {
 			$("#chat-messages").append($chatMessage);
 			messageInput.val("");
 			messageInput.focus();
-			
-			//client.send(message);
-			return false;
 		}
 	});
+	
 	$(".message").keypress(function(e){
         if(e.which == 13){//Enter key pressed
             $(".send").tap();
