@@ -67,7 +67,6 @@
       if (settings.bullets) {
         bullets_container = $('<ol>').addClass(settings.bullets_container_class);
         container.append(bullets_container);
-        bullets_container.wrap('<div class="orbit-bullets-container"></div>');
         slides_container.children().each(function(idx, el) {
           var bullet = $('<li>').attr('data-orbit-slide', idx);
           bullets_container.append(bullet);
@@ -101,7 +100,7 @@
       current.removeClass(settings.active_slide_class);
       next.css('zIndex', 4).addClass(settings.active_slide_class);
 
-      slides_container.trigger('before-slide-change.fndtn.orbit');
+      slides_container.trigger('orbit:before-slide-change');
       settings.before_slide_change();
       self.update_active_link(next_idx);
       
@@ -111,7 +110,7 @@
           locked = false;
           if (start_timer === true) {timer = self.create_timer(); timer.start();}
           self.update_slide_number(idx);
-          slides_container.trigger('after-slide-change.fndtn.orbit',[{slide_number: idx, total_slides: slides.length}]);
+          slides_container.trigger('orbit:after-slide-change',[{slide_number: idx, total_slides: slides.length}]);
           settings.after_slide_change(idx, slides.length);
         };
         if (slides_container.height() != next.height() && settings.variable_height) {
@@ -268,7 +267,7 @@
       $(window).on('load', function(){
         container.prev('.preloader').css('display', 'none');
       });
-      slides_container.trigger('ready.fndtn.orbit');
+      slides_container.trigger('orbit:ready');
     };
 
     self.init();
@@ -307,7 +306,7 @@
         self.restart();
         callback();
       }, left);
-      el.trigger('timer-started.fndtn.orbit')
+      el.trigger('orbit:timer-started')
     };
 
     this.stop = function() {
@@ -318,7 +317,7 @@
       left = left - (end - start);
       var w = 100 - ((left / duration) * 100);
       self.update_progress(w);
-      el.trigger('timer-stopped.fndtn.orbit');
+      el.trigger('orbit:timer-stopped');
     };
   };
   
@@ -330,17 +329,15 @@
     animMargin[margin] = '0%';
 
     this.next = function(current, next, callback) {
-      current.animate({marginLeft:'-100%'}, duration);
-      next.animate(animMargin, duration, function() {
+      next.animate(animMargin, duration, 'linear', function() {
         current.css(margin, '100%');
         callback();
       });
     };
 
     this.prev = function(current, prev, callback) {
-      current.animate({marginLeft:'100%'}, duration);
       prev.css(margin, '-100%');
-      prev.animate(animMargin, duration, function() {
+      prev.animate(animMargin, duration, 'linear', function() {
         current.css(margin, '100%');
         callback();
       });
@@ -375,7 +372,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.0.0',
+    version: '4.3.2',
 
     settings: {
       animation: 'slide',
@@ -411,6 +408,7 @@
 
     init: function (scope, method, options) {
       var self = this;
+      Foundation.inherit(self, 'data_options');
 
       if (typeof method === 'object') {
         $.extend(true, self.settings, method);
@@ -431,4 +429,4 @@
   };
 
     
-}(jQuery, this, this.document));
+}(Foundation.zj, this, this.document));

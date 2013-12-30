@@ -1,0 +1,138 @@
+/******************** CUSTOM ********************/
+
+
+/*  MIXIN FOR ROUNDED BORDERS  */
+@mixin corners($top_l, $top_r, $bottom_r, $bottom_l) {
+  @if $top_l {
+    -webkit-border-top-left-radius:$top_l;
+    -moz-border-radius-topleft: $top_l;
+    border-top-left-radius: $top_l;
+  }
+  @if $top_r {
+    -webkit-border-top-right-radius: $top_r;
+    -moz-border-radius-topright: $top_r;
+    border-top-right-radius: $top_r;
+  }
+  @if $bottom_r {
+    -webkit-border-bottom-right-radius: $bottom_r;
+    -moz-border-radius-bottomright: $bottom_r;
+    border-bottom-right-radius: $bottom_r;
+  }
+  @if $bottom_l {
+    -webkit-border-bottom-left-radius: $bottom_l;
+    -moz-border-radius-bottomleft: $bottom_l;
+    border-bottom-left-radius: $bottom_l;
+  }
+}
+
+/*  MIXIN FOR DROP SHADOW  */
+@mixin box-shadow($h-shadow: 0px, $v-shadow: 0px, $blur: 0px, $spread: 0px, $color: #000, $inset: "" ){
+  -moz-box-shadow: unquote($inset) $h-shadow $v-shadow $blur $spread $color;
+  -webkit-box-shadow: unquote($inset) $h-shadow $v-shadow $blur $spread $color;
+  box-shadow: unquote($inset) $h-shadow $v-shadow $blur $spread $color;
+}
+
+/*  MIXIN FOR TRANSITIONS  */
+@mixin transition($t: 0ms){
+  -webkit-transition: all linear $t ;
+  -moz-transition: all linear $t ;
+  -ms-transition: all linear $t ;
+  -o-transition: all linear $t ;
+  transition: all linear $t ;
+}
+
+
+
+/************ BUTTONS ************/
+
+.btn {
+  cursor: pointer;
+}
+
+.btnDefault {
+  @extend .btn;
+    padding: 14px 25px;
+    color:#ffffff;
+
+    text-indent:0;
+    display:inline-block;
+    
+    font-family:Arial;
+    font-size:18px;
+
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 2px #000000;
+}
+
+
+.triangle {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 50px 0 50px 86.6px;
+  border-color:  -webkit-gradient( linear, left top, left bottom, color-stop(7, #ff0000), color-stop(.5, #ff0000) );
+}
+
+/************ TAB NAVIGATION ************/
+.tab {
+  @extend .btnDefault;
+  float: left;
+  border-right: thin solid #999;
+  background-color:#d2d3d2;
+  text-shadow: none;
+  font-weight: bold;
+  color: #777;
+  @include box-shadow(0px, 38px, 0px, -15px, #f4f4f4, inset);
+  @include transition(75ms);
+
+  &:first-child {
+    @include corners(8px,false,false,8px);
+  }
+
+  &:last-child {
+    border-right: none;
+    @include corners(false,8px,8px,false);
+  }
+
+}
+
+.tab.active {
+  @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.5), inset);
+}
+
+.tab_sm {
+  @extend .tab;
+  font-size: 14px;
+  padding: 7px 15px;
+  @include box-shadow(0px, 24px, 0px, -8px, #f4f4f4, inset);
+}
+
+
+/************ SHAPES ************/
+.arrowDefault {
+  /* POINTS RIGHT, WHITE */
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 6px 0 6px 6px;
+  margin: 0 0 1px 0;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+$circleDia: 15px;
+.circle {
+  @include corners(50%,50%,50%,50%);
+  width: $circleDia;
+  height: $circleDia; 
+  @include box-shadow(1px, 1px, 4px, 0px, #000, inset);
+  @include transition(500ms);
+}
+
+.circle_orange {
+  @extend .circle;
+}
+.circle_orange.active {
+  background-color: #ffcc00;
+}

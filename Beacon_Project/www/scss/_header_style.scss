@@ -1,0 +1,78 @@
+.header {
+  margin: 10px 0 0 0;
+  a {
+    position: relative;
+    top: 5px;
+    margin: 0 5px;
+  }
+  div {
+    position: relative;
+    top: 20px;
+    float: left;
+
+    ul { list-style-type: none; margin-bottom: 2.5rem;}
+
+    #header-menu {
+      li { float: left; padding: 0 5px; }
+    }
+    #drop-menu {
+      position: absolute;
+      width: 225px;
+      border-radius: 5px;
+      overflow: hidden;
+      @include box-shadow(0px, 0px, 7px, 0px, #999);
+      a { 
+        top: 0px;
+        font-size: 0.9rem; 
+        margin: 0 15px;
+      }
+      li:hover { 
+        background-color: #999;
+      }
+
+      .drop-menu-motion {
+        line-height:40px;
+        list-style:none;
+        box-sizing:border-box;
+        -webkit-transition:all linear 0.5s;
+        transition:all linear 0.5s;
+      }
+      .drop-menu-motion.ng-animate.ng-enter {
+        opacity:0;
+      }
+      .drop-menu-motion.ng-animate.ng-animate-active.ng-enter.ng-enter-active {
+        opacity: 1;
+      }
+      .drop-menu-motion.ng-animate.ng-leave,
+      .drop-menu-motion.ng-animate.ng-leave {
+        opacity:0;
+        height: 0;
+        /*display: none;*/
+      }
+    }
+  }
+  .header-logo {
+    padding: 10px;
+    float: left;
+  }
+}
+
+#header-search {
+  position: relative;
+  input{
+    width: 95%;
+    border-radius: 10px;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+  }
+  img {
+    position: absolute;
+    top: 41px;
+    left: 13px;
+  }
+}
+
+#login-links {
+  position: relative;
+  height: 20px;
+  a { float: left; font-size: 0.7rem; margin: 10px 10px 0 0; }
+}

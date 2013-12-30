@@ -1,0 +1,58 @@
+<form name="loginForm">
+                   
+  <div class="row">
+    <div class="small-12 small-centered">
+        <fieldset>
+            <legend>Please Log In</legend>
+
+          <div class="row" ng-if="!onStatus.username">
+            <div class="small-12 columns">
+              <input type="text" name="myUsername" ng-model="loginInfo.username" placeholder="Enter your Username" required>
+              <!-- <small class="error">Required</small> -->
+            </div>
+          </div>
+          	
+          <div class="row">
+            <div class="small-12 columns">
+              <input type="text" name="myPin" ng-model="loginInfo.pin" ng-minlength="4" placeholder="Enter your Pin" required>
+              <!-- <small class="error">Required</small> -->
+            </div>
+          </div>
+          <div class="row" ng-if="!onStatus.username && onStatus.status!='register'">
+          	<div class="small-12 columns"><div><a href="#" ng-click="onStatus.status = 'register'">Register</a>{{$scope.loginInfo.status}}</div></div>
+          </div>
+
+          <div class="row" ng-if="onStatus.status == 'register'">
+            <div class="small-12 columns">
+              <input type="text" name="rePin" ng-model="loginInfo.repin" ng-minlength="4" placeholder="Confirm your Pin" required>
+              <!-- <small class="error">Required</small> -->
+            </div>
+          </div>
+        </fieldset>
+	    </div>
+	  </div>
+	  <div class="row" ng-if="onStatus.status == 'register'">
+	    <div class="small-12 centered">
+	        <fieldset>
+	            <legend>OPTIONAL</legend>
+	            <div class="row">
+	                <div class="small-12 columns">
+	                    <h5><small>Allows friends to find you through their contact list.</small></h5>
+	                    <input type="text" id="right-label" ng-model="loginInfo.phone" placeholder="Phone Number">
+	                </div>
+	                <div class="small-12 columns">
+	                    <input type="email" id="right-label" ng-model="loginInfo.email" placeholder="E-Mail">
+	                </div>
+	            </div>
+	        </fieldset>
+	    </div>
+	  </div>
+
+		<div class="row">
+    	<div class="small-10 columns"></div>
+      <div class="small-2 columns">
+        <button ng-disabled="loginForm.$invalid" ng-click="onLogin()">ENTER</button>
+        <!-- <small class="error">Required</small> -->
+      </div>
+    </div>
+</form>

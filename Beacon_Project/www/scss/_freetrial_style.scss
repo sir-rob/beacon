@@ -1,0 +1,68 @@
+#freetrial {
+	width: 1000px;
+	height: 278px;
+	input:not([type=submit]) {
+		width: 98%;
+		border-radius: 10px;
+		padding: 1.4rem 1.5rem;
+		margin: 0 1rem 0 0;
+		background-color: #fff;
+	}
+}
+
+#freetrial-wrapper {
+	width: 945px;
+	height: 210px;
+	margin: 0 auto;
+	.freetrial-poster {
+		width: 147px;
+		height: 210px;
+		float: left;
+		padding: 0 5px;
+	}
+	#freetrial-container {
+		position: relative;
+
+		.freetrial-motion {
+			position: absolute;
+			top: 0px;
+			width: 100%;
+	    @include transition(500ms);
+	  	
+	  	.btnOrange {
+	  		width: 100%;
+	  	}
+	  	.btnOrange.inactive {
+
+	  	}
+	  }
+		.freetrial-motion {
+		  display:block!important;
+		}
+	  .freetrial-motion.ng-hide {
+	    left: 150%;
+	  }
+	  .freetrial-motion.ng-animate.ng-hide-remove {
+	    /*left: 0%;*/
+	  }
+	  .freetrial-motion.ng-animate.ng-hide-add {
+	    left: -150%;
+	  }
+
+
+	  /*.freetrial-motion.ng-animate.ng-enter {
+	    left: 150%;
+	  }
+	  .freetrial-motion.ng-animate.ng-enter-active {
+	    left: 0%;
+	  }
+	  .freetrial-motion.ng-animate.ng-leave-active {
+	    left: -150%;
+	  }*/
+	}
+}
+
+#freetrial-message {
+	position: relative;
+	margin-top: -205px;
+}
